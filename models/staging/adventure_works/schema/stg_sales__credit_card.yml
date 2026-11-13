@@ -1,0 +1,13 @@
+models:
+  - name: stg_sales__credit_card
+    description: Staging model for the credit card source table.
+    columns:
+
+      - name: pk_credit_card_id
+        description: Primary key.
+
+      - name: card_type
+        description: Credit card name.
+        
+      - name: ts_modified_date
+        description: Timestamp when the source row was last modified.

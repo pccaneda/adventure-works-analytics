@@ -1,0 +1,55 @@
+models:
+  - name: stg_production__product
+    description: Staging model for the product source table.
+    columns:
+
+    - name: pk_product_id
+      description: Product identification. Primary key.
+
+    - name: fk_product_subcategory_id
+      description: Foreign key to product subcategory staging table.
+
+    - name: product_name
+      description: Product name.
+
+    - name: make_flag
+      description: Whether the product is manufactured internally. Boolean.
+
+    - name: finished_goods_flag
+      description: Whether the product is a finished good available for sale. Boolean.
+
+    - name: product_color
+      description: Product's color.
+
+    - name: product_size
+      description: Product's size.
+
+    - name: product_weight
+      description: Product's weight.
+
+    - name: product_line
+      description: |
+        "Product line classification.
+        M: Mountain, R: Road, S: Standard, T: Touring."
+
+    - name: product_class
+      description: | 
+        "Product class classification.
+        H: High, M: Medium, L: Low."
+
+    - name: product_style
+      description: |
+        "Product style classification.
+        M: Men, W: Women, U: Universal."
+
+    - name: product_sell_start_date
+      description: Date from which the product is available for sale.
+
+    - name: product_sell_end_date
+      description: Date on which the product is no longer available for sale.
+
+    - name: product_discontinued_date
+      description: Date on which the product was discontinued.
+
+    - name: ts_modified_date
+      description: Timestamp when the source row was last modified.

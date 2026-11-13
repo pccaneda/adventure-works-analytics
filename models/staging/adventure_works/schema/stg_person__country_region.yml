@@ -1,0 +1,13 @@
+models:
+  - name: stg_person__country_region
+    description: Staging model for the country region source table.
+    columns:
+
+    - name: pk_country_region_code
+      description: ISO code for the country or region. Primary key.
+
+    - name: country_region_name
+      description: Country or region name.
+
+    - name: ts_modified_date
+      description: Timestamp when the source row was last modified.

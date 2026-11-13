@@ -1,0 +1,31 @@
+models:
+  - name: stg_sales__sales_territory
+    description: Staging model for the sales territory history source table.
+    columns:
+
+    - name: pk_territory_id
+      description: Primary key.
+
+    - name: territory_name
+      description: Territory name.
+
+    - name: country_region_code
+      description: Country or region ISO code. Foreign key to the country region staging table.
+
+    - name: territory_group
+      description: Geographic area to which the territory belongs.
+
+    - name: sales_ytd
+      description: Year to date sales in the territory.
+
+    - name: sales_last_year
+      description: Last year sales in the territory.
+
+    - name: cost_ytd
+      description: Year to date costs in the territory.
+
+    - name: cost_last_year
+      description: Last year costs in the territory.
+
+    - name: ts_modified_date
+      description: Timestamp when the source row was last modified.

@@ -1,0 +1,13 @@
+models:
+  - name: stg_sales__currency
+    description: Staging model for the currency source table.
+    columns:
+
+    - name: pk_currency_code
+      description: Currency ISO code. Primary key.
+
+    - name: currency_name
+      description: Currency name.
+
+    - name: ts_modified_date
+      description: Timestamp when the source row was last modified.

@@ -1,0 +1,22 @@
+models:
+  - name: stg_person__state_province
+    description: Staging model for the state province source table.
+    columns:
+
+    - name: pk_state_province_id
+      description: Primary key.
+
+    - name: fk_country_region_id
+      description: Foreign key to state province staging table.
+
+    - name: fk_territory_id
+      description: Foreign key to the sales territory staging table.
+
+    - name: state_province_code
+      description: ISO code for the state or province.
+
+    - name: state_province_name
+      description: Stating or province name.
+
+    - name: ts_modified_date
+      description: Timestamp when the source row was last modified.

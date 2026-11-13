@@ -1,0 +1,13 @@
+models:
+  - name: stg_sales__sales_order_header_sales_reason
+    description: Staging model for the sales order header sales reason source table. Bridge between the sales order header and sales reason staging models.
+    columns:
+
+      - name: pk_sales_order_id
+        description: Primary key component. Foreign key to the sales order header staging model.
+
+      - name: pk_sales_reason_id
+        description: Primary key component. Foreign key to the sales reason staging model.
+
+      - name: ts_modified_date
+        description: Timestamp when the source row was last modified.

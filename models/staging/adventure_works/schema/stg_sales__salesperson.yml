@@ -1,0 +1,13 @@
+models:
+  - name: stg_sales__salesperson
+    description: Staging model for the salesperon source table.
+    columns:
+
+    - name: pk_business_entity_id
+      description: Primary key. Foreign key to the employee staging model.
+
+    - name: fk_territory_id
+      description: Foreign key to the sales territory staging model.
+
+    - name: ts_modified_date
+      description: Timestamp when the source row was last modified.

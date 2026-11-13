@@ -1,0 +1,16 @@
+models:
+  - name: stg_sales__store
+    description: Staging model for the store source table.
+    columns:
+
+    - name: pk_business_entity_id
+      description: Primary key. Foreign key to the salesperson and business entity staging models.
+
+    - name: store_name
+      description: Store name.
+
+    - name: store_demographics
+      description: Demographic information about the store.
+
+    - name: ts_modified_date
+      description: Timestamp when the source row was last modified.

@@ -1,0 +1,59 @@
+models:
+  - name: stg_sales__sales_order_header
+    description: Staging model for the sales order header source table.
+    columns:
+
+    - name: pk_sales_order_id
+      description: Primary key for the sales order header staging model.
+
+    - name: fk_customer_id
+      description: Customer identification. Foreign key to the customer staging model.
+
+    - name: fk_sales_person_id
+      description: Salesperson identification. Foreign key to the salesperson staging model.
+
+    - name: fk_territory_id
+      description: Territory identification. Foreign key to the territory staging model.
+
+    - name: fk_credit_card_id
+      description: Credit card identification. Foreign key to the credit card staging model.
+
+    - name: fk_currency_rate_id
+      description: Currency exchange rate identification. Foreign key to the currency rate staging model.
+
+    - name: ts_order_date
+      description: Timestamp when the order was created.
+
+    - name: ts_ship_date
+      description: Timestamp when the order was shipped to the customer.
+
+    - name: ts_due_date
+      description: Timestamp when the order is due to the customer.
+
+    - name: order_status
+      description: "Current order status. Possible values: 'In process', 'Approved', 'Backordered', 'Rejected', 'Shipped', 'Cancelled'."
+      data_tests:
+        - accepted_values:
+            arguments:
+              values: ['In process', 'Approved', 'Backordered', 'Rejected', 'Shipped', 'Cancelled']
+
+    - name: online_order_flag
+      description: "Online order indicator. 0: placed offline by salesperson, 1: placed online by customer."
+
+    - name: credit_card_approval_code
+      description: Approval code issued by the credit card company.
+
+    - name: order_sub_total
+      description: Order subtotal.
+
+    - name: order_tax_amount
+      description: Tax amount.
+
+    - name: order_freight
+      description: Cost of shipping.
+
+    - name: order_total
+      description: Order total. Sum of subtotal, taxamt and freight.
+
+    - name: ts_modified_date
+      description: Timestamp when the source row was last modified.
