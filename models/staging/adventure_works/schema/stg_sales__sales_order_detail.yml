@@ -1,0 +1,28 @@
+models:
+  - name: stg_sales__order_detail
+    description: Staging model for the sales order detail source table.
+    columns:
+
+    - name: pk_sales_order_id
+      description: Primary key component. Foreign key to the sales order header staging model.
+
+    - name: pk_sales_order_detail_id
+      description: Primary key component.
+
+    - name: fk_product_id
+      description: Foreign key to the product staging model.
+
+    - name: fk_special_offer_id
+      description: Foreign key to the special offer product staging model.
+
+    - name: order_quantity
+      description: Product quantity ordered.
+
+    - name: unit_price
+      description: Price of a unit of the product.
+
+    - name: unit_price_discount
+      description: Discount of a unit of the product.
+
+    - name: ts_modified_date
+      description: Timestamp when the source row was last modified.

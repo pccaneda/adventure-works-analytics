@@ -1,0 +1,25 @@
+models:
+  - name: stg_sales__currency_rate
+    description: Staging model for the currency rate source table.
+    columns:
+    
+    - name: pk_currency_rate_id
+      description: Primary key.
+
+    - name: fk_from_currency_code
+      description: Code of the currency from which to convert. Foreign key to the currency staging model.
+
+    - name: fk_to_currency_code
+      description: Code of the currency to which to convert. Foreign key to the currency staging model.
+
+    - name: ts_currency_rate_date
+      description: Timestamp when currency rate was obtained.
+
+    - name: average_rate
+      description: Daily average of the exchange rate.
+
+    - name: end_of_day_rate
+      description: Last daily exchange rate.
+
+    - name: ts_modified_date
+      description: Timestamp when the source row was last modified.

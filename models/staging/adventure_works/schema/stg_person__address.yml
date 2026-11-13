@@ -1,0 +1,16 @@
+models:
+  - name: stg_person__address
+    description: Staging model for the address source table.
+    columns:
+
+    - name: pk_address_id
+      description: Primary key.
+
+    - name: fk_state_province_id
+      description: Foreign key to state province staging table.
+
+    - name: city_name
+      description: City name.
+
+    - name: ts_modified_date
+      description: Timestamp when the source row was last modified.

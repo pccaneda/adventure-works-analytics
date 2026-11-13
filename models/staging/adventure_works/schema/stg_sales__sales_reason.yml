@@ -1,0 +1,16 @@
+models:
+  - name: stg_sales__sales_reason
+    description: Staging model for the sales reason source table.
+    columns:
+
+    - name: pk_sales_reason_id
+      description: Primary key.
+
+    - name: sales_reason_name
+      description: Sales reason description.
+
+    - name: sales_reason_type
+      description: Sales reason category.
+
+    - name: ts_modified_date
+      description: Timestamp when the source row was last modified.

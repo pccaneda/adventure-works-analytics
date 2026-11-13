@@ -1,0 +1,13 @@
+models:
+  - name: stg_production__product_category
+    description: Staging model for the product category source table.
+    columns:
+
+    - name: pk_product_category_id
+      description: Category identification. Primary key.
+
+    - name: category_name
+      description: Category name.
+
+    - name: ts_modified_date
+      description: Timestamp when the source row was last modified.

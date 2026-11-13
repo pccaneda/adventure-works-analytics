@@ -1,0 +1,19 @@
+models:
+  - name: stg_sales__customer
+    description: Staging model for the customer source table.
+    columns:
+
+    - name: pk_customer_id
+      description: Primary key.
+
+    - name: fk_person_id
+      description: Foreign key to the person staging model.
+
+    - name: fk_store_id
+      description: Foreign key to the store staging model.
+
+    - name: fk_territory_id
+      description: Foreign key to the territory staging model.
+
+    - name: ts_modified_date
+      description: Timestamp when the source row was last modified.

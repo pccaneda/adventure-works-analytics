@@ -1,0 +1,16 @@
+models:
+  - name: stg_production__product_subcategory
+    description: Staging model for the address source table.
+    columns:
+
+    - name: pk_subcategory_id
+      description: Subcategory identification. Primary key.
+
+    - name: fk_product_category_id
+      description: Parent category identification. Foreign key to product category staging table.
+
+    - name: subcategory_name
+      description: Subcategory name.
+
+    - name: ts_modified_date
+      description: Timestamp when the source row was last modified.

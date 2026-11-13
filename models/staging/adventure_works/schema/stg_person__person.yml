@@ -1,0 +1,15 @@
+models:
+  - name: stg_person__person
+    description: Staging model for the person source table.
+    columns:
+
+    - name: pk_business_entity_id
+      description: Primary key.
+
+    - name: person_type
+      description: |  
+        "Person type in relation to the business. 
+        EM: Employee, GC: General Contact, IN: Individual, SC: Store Contact, SP: Salesperson, VC: Vendor Contact."
+
+    - name: person_full_name
+      description: Person's full name including honorific and suffix.
