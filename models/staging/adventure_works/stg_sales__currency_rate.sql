@@ -9,7 +9,7 @@ with
             currencyrateid as pk_currency_rate_id,
             fromcurrencycode as fk_from_currency_code,
             tocurrencycode as fk_to_currency_code,
-            cast(currencyratedate as timestamp) as ts_currency_rate_date,
+            cast(currencyratedate as date) as dt_currency_rate_date,
             averagerate as average_rate,
             endofdayrate as end_of_day_rate,
             cast(modifieddate as timestamp) as ts_modified_date

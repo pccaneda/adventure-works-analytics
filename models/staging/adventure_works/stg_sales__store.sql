@@ -8,7 +8,6 @@ with
         select
             businessentityid as pk_business_entity_id,
             name as store_name,
-            demographics as store_demographics,
             cast(modifieddate as timestamp) as ts_modified_date
         from source_store
     )

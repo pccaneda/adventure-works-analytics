@@ -12,9 +12,9 @@ with
             cast(territoryid as int) as fk_territory_id,
             cast(creditcardid as int) as fk_credit_card_id,
             cast(currencyrateid as int) as fk_currency_rate_id,
-            cast(orderdate as timestamp) as ts_order_date,
-            cast(shipdate as timestamp) as ts_ship_date,
-            cast(duedate as timestamp) as ts_due_date,
+            cast(orderdate as date) as dt_order_date,
+            cast(shipdate as date) as dt_ship_date,
+            cast(duedate as date) as dt_due_date,
             case
                 when status = 1 then 'In process'
                 when status = 2 then 'Approved'

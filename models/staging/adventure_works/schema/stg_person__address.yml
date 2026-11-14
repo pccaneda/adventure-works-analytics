@@ -9,6 +9,12 @@ models:
     - name: fk_state_province_id
       description: Foreign key to state province staging table.
 
+    - name: address_line_1
+      description: First street address line.
+      
+    - name: address_line_2
+      description: Second street address line.
+
     - name: city_name
       description: City name.
 

@@ -17,8 +17,8 @@ with
             trim(productline) as product_line,
             trim(class) as product_class,
             trim(style) as product_style,
-            cast(sellstartdate as date) as product_sell_start_date,
-            cast(sellenddate as date) as product_sell_end_date,
+            cast(sellstartdate as date) as dt_product_sell_start_date,
+            cast(sellenddate as date) as dt_product_sell_end_date,
             cast(modifieddate as timestamp) as ts_modified_date
         from source_product
     )
