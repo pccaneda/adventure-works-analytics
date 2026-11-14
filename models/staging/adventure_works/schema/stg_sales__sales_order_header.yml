@@ -21,14 +21,14 @@ models:
     - name: fk_currency_rate_id
       description: Currency exchange rate identification. Foreign key to the currency rate staging model.
 
-    - name: ts_order_date
-      description: Timestamp when the order was created.
+    - name: dt_order_date
+      description: Date when the order was created.
 
-    - name: ts_ship_date
-      description: Timestamp when the order was shipped to the customer.
+    - name: dt_ship_date
+      description: Date when the order was shipped to the customer.
 
-    - name: ts_due_date
-      description: Timestamp when the order is due to the customer.
+    - name: dt_due_date
+      description: Date when the order is due to the customer.
 
     - name: order_status
       description: "Current order status. Possible values: 'In process', 'Approved', 'Backordered', 'Rejected', 'Shipped', 'Cancelled'."
@@ -39,9 +39,6 @@ models:
 
     - name: online_order_flag
       description: "Online order indicator. 0: placed offline by salesperson, 1: placed online by customer."
-
-    - name: credit_card_approval_code
-      description: Approval code issued by the credit card company.
 
     - name: order_sub_total
       description: Order subtotal.

@@ -9,8 +9,5 @@ models:
     - name: store_name
       description: Store name.
 
-    - name: store_demographics
-      description: Demographic information about the store.
-
     - name: ts_modified_date
       description: Timestamp when the source row was last modified.

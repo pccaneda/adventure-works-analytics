@@ -42,14 +42,11 @@ models:
         "Product style classification.
         M: Men, W: Women, U: Universal."
 
-    - name: product_sell_start_date
+    - name: dt_product_sell_start_date
       description: Date from which the product is available for sale.
 
-    - name: product_sell_end_date
+    - name: dt_product_sell_end_date
       description: Date on which the product is no longer available for sale.
-
-    - name: product_discontinued_date
-      description: Date on which the product was discontinued.
 
     - name: ts_modified_date
       description: Timestamp when the source row was last modified.

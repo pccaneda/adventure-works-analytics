@@ -7,11 +7,13 @@ sources:
       - name: person_address
         description: Addresses for business entities.
         columns:
+
           - name: addressid
             description: Primary key.
             data_tests:
               - unique
               - not_null
+
           - name: stateprovinceid
             description: State or province identification. Foreign key to the state province table.
             data_tests:
@@ -20,64 +22,87 @@ sources:
                   arguments:
                     to: ref('person_stateprovince')
                     field: stateprovinceid
+
+          - name: addressline1
+            description: First street address line.
+            data_tests:
+              - not_null
+
+          - name: addressline2
+            description: Second street address line.
+
           - name: city
             description: City name.
             data_tests:
               - not_null
+
           - name: modifieddate
             description: Date the source row was last modified.
 
       - name: person_countryregion
         description: Country or region information.
         columns:
+
           - name: countryregioncode
             description: ISO code for the country or region. Primary key.
             data_tests:
               - unique
+
           - name: name
             description: Country or region name
             data_tests:
               - not_null
+
           - name: modifieddate
             description: Date the source row was last modified.
 
       - name: person_person
         description: Personal individual information.
         columns:
+
           - name: businessentityid
             description: Primary key.
             data_tests:
               - unique
               - not_null
+
           - name: persontype
             description: |
               "Person type in relation to the business. 
               EM: Employee, GC: General Contact, IN: Individual, SC: Store Contact, SP: Salesperson, VC: Vendor Contact."
+
           - name: title
             description: Honorific title.
+
           - name: firstname
             description: Person's first name.
             data_tests:
               - not_null
+
           - name: middlename
             description: Person's middle name.
+
           - name: lastname
             description: Person's last name.
             data_tests:
               - not_null
+
           - name: suffix
             description: Name suffix.
+
           - name: modifieddate
             description: Date the source row was last modified.
 
       - name: person_stateprovince
         description: State or province information.
         columns:
+
           - name: stateprovinceid
             description: Primary key.
             data_tests:
               - unique
               - not_null
+
           - name: countryregioncode
             description: ISO code for the country or region. Foreign key to the country region table.
             data_tests:
@@ -86,6 +111,7 @@ sources:
                   arguments:
                     to: ref('person_countryregion')
                     field: countryregioncode
+
           - name: territoryid
             description: Territory identification. Foreign key to the sales territory table.
             data_tests:
@@ -94,88 +120,47 @@ sources:
                   arguments:
                     to: ref('sales_salesterritory')
                     field: territoryid
+
           - name: stateprovincecode
             description: ISO code for the state or province.
             data_tests:
               - not_null
+
           - name: name
             description: State or province name.
             data_tests:
               - not_null
+
           - name: modifieddate
             description: Date the source row was last modified.
 
-      - name: production_product
-        description: Core product table. Includes both salable and non-salable manufacturing products.
-        columns:
-          - name: productid
-            description: Product identification. Primary key.
-            data_tests:
-              - unique
-              - not_null
-          - name: productsubcategoryid
-            description: Product subcategory identification. Foreign key.
-            data_tests:
-              - relationships:
-                  arguments:
-                    to: ref('production_productsubcategory')
-                    field: productsubcategoryid
-          - name: name
-            description: Product name.
-            data_tests:
-              - not_null
-          - name: makeflag
-            description: Whether the product is manufactured internally. Boolean.
-          - name: finishedgoodsflag
-            description: Whether the product is a finished good available for sale. Boolean.
-          - name: color
-            description: Product color.
-          - name: size
-            description: Product size.
-          - name: weight
-            description: Product weight.
-          - name: productline
-            description: |
-              "Product line classification.
-              M: Mountain, R: Road, S: Standard, T: Touring."
-          - name: class
-            description: | 
-              "Product class classification.
-              H: High, M: Medium, L: Low."
-          - name: style
-            description: |
-              "Product style classification.
-              M: Men, W: Women, U: Universal."
-          - name: sellstartdate
-            description: Date from which the product is available for sale.
-          - name: sellenddate
-            description: Date on which the product is no longer available for sale.
-          - name: discontinueddate
-            description: Date on which the product was discontinued.
-          - name: modifieddate
-            description: Date the source row was last modified.
 
       - name: production_productcategory
         description: Product category information.
         columns:
+
           - name: productcategoryid
             description: Category identification. Primary key.
             data_tests:
               - unique
               - not_null
+
           - name: name
             description: Category name.
+
           - name: modifieddate
             description: Date the source row was last modified.
 
       - name: production_productsubcategory
         description: Product subcategory information.
         columns:
+
           - name: productsubcategoryid
             description: Subcategory identification. Primary key.
             data_tests:
               - unique
               - not_null
+
           - name: productcategoryid
             description: Parent category identification. Foreign key to the product category table.
             data_tests:
@@ -184,45 +169,102 @@ sources:
                   arguments:
                     to: ref('production_productsubcategory')
                     field: productcategoryid
+
           - name: name
             description: Subcategory name.
+
+          - name: modifieddate
+            description: Date the source row was last modified.
+
+      - name: production_product
+        description: Core product table. Includes both salable and non-salable manufacturing products.
+        columns:
+
+          - name: productid
+            description: Product identification. Primary key.
+            data_tests:
+              - unique
+              - not_null
+
+          - name: productsubcategoryid
+            description: Product subcategory identification. Foreign key.
+            data_tests:
+              - relationships:
+                  arguments:
+                    to: ref('production_productsubcategory')
+                    field: productsubcategoryid
+
+          - name: name
+            description: Product name.
+            data_tests:
+              - not_null
+
+          - name: makeflag
+            description: Whether the product is manufactured internally. Boolean.
+
+          - name: finishedgoodsflag
+            description: Whether the product is a finished good available for sale. Boolean
+            .
+          - name: color
+            description: Product color.
+
+          - name: size
+            description: Product size.
+
+          - name: weight
+            description: Product weight.
+
+          - name: productline
+            description: |
+              "Product line classification.
+              M: Mountain, R: Road, S: Standard, T: Touring."
+
+          - name: class
+            description: | 
+              "Product class classification.
+              H: High, M: Medium, L: Low."
+
+          - name: style
+            description: |
+              "Product style classification.
+              M: Men, W: Women, U: Universal."
+
+          - name: sellstartdate
+            description: Date from which the product is available for sale.
+
+          - name: sellenddate
+            description: Date on which the product is no longer available for sale.
+
           - name: modifieddate
             description: Date the source row was last modified.
 
       - name: sales_creditcard
         description: Credit card information including card types and sensitive Payment Card Industry (PCI) data.
         columns:
+
           - name: creditcardid
             description: Primary key.
             data_tests:
               - unique
               - not_null
+
           - name: cardtype
             description: Credit card brand.
+
           - name: modifieddate
             description: Date the source row was last modified.
 
-      - name: sales_currency
-        description: ISO currency information.
-        columns:
-          - name: currencycode
-            description: Currency ISO code. Primary key.
-            data_tests:
-              - unique
-              - not_null
-          - name: name
-            description: Currency name.
-          - name: modifieddate
-            description: Date the source row was last modified.
 
       - name: sales_currencyrate
         description: Historical currency exchange rates.
         columns:
+
           - name: currencyrateid
             description: Primary key.
             data_tests:
               - unique
               - not_null
+
           - name: fromcurrencycode
             description: ISO code of the currency to be converted. Foreign key to currency table.
             data_tests:
@@ -231,6 +273,7 @@ sources:
                   arguments:
                     to: ref('sales_currency')
                     field: currencycode
+
           - name: tocurrencycode
             description: ISO code of the target currency. Foreign key to currency table.
             data_tests:
@@ -239,23 +282,45 @@ sources:
                   arguments:
                     to: ref('sales_currency')
                     field: currencycode
+
           - name: currencyratedate
-            description: Datetime when currency rate was obtained.
+            description: Date and time when currency rate was obtained.
+
           - name: averagerate
             description: Daily average of the exchange rate.
+
           - name: endofdayrate
             description: Final exchange rate of the day.
+
+          - name: modifieddate
+            description: Date the source row was last modified.
+            
+      - name: sales_currency
+        description: ISO currency information.
+        columns:
+
+          - name: currencycode
+            description: Currency ISO code. Primary key.
+            data_tests:
+              - unique
+              - not_null
+
+          - name: name
+            description: Currency name.
+
           - name: modifieddate
             description: Date the source row was last modified.
 
       - name: sales_customer
         description: Core customer table. Customers include individuals and reseller stores.
         columns:
+
           - name: customerid
             description: Customer identification. Primary key.
             data_tests:
               - unique
               - not_null
+
           - name: personid
             description: Individual customer identification. Foreign key to the person table.
             data_tests:
@@ -263,6 +328,7 @@ sources:
                   arguments:
                     to: ref('person_person')
                     field: businessentityid
+
           - name: storeid
             description: Reseller identification. Foreign key to the store table.
             data_tests:
@@ -270,6 +336,7 @@ sources:
                   arguments:
                     to: ref('sales_store')
                     field: businessentityid
+
           - name: territoryid
             description: Customer location identification. Foreign key to the territory table.
             data_tests:
@@ -278,12 +345,14 @@ sources:
                   arguments:
                     to: ref('sales_salesterritory')
                     field: territoryid
+
           - name: modifieddate
             description: Date the source row was last modified.
 
       - name: sales_salesorderdetail
         description: Sales order line information at the product grain. Includes unit prices, quantities and discounts.
         columns:
+
           - name: salesorderid
             description: Order identification. Primary key component. Foreign key to the sales order header table.
             data_tests:
@@ -292,11 +361,13 @@ sources:
                   arguments:
                     to: ref('sales_salesorderheader')
                     field: salesorderid
+
           - name: salesorderdetailid
             description: Order line identification. Primary key component.
             data_tests:
               - unique
               - not_null
+
           - name: productid
             description: Foreign key to the product table.
             data_tests:
@@ -305,96 +376,29 @@ sources:
                   arguments: 
                     to: ref('production_product')
                     field: productid
+
           - name: orderqty
             description: Product quantity ordered.
             data_tests:
               - not_null
+
           - name: unitprice
             description: Selling price of a product unit before discounts.
             data_tests:
               - not_null
+
           - name: unitpricediscount
             description: Discount of a unit of the product.
             data_tests:
               - not_null
-          - name: modifieddate
-            description: Date the source row was last modified.
-            
-      - name: sales_salesorderheader
-        description: Sales order header information at the order grain. 
-        columns:
-          - name: salesorderid
-            description: Primary key.
-            data_tests:
-              - unique
-              - not_null
-          - name: customerid
-            description: Customer identification. Foreign key to the customer table.
-            data_tests:
-              - not_null
-              - relationships:
-                  arguments:
-                    to: ref('sales_customer')
-                    field: customerid
-          - name: salespersonid
-            description: Salesperson identification. Foreign key to the salesperson table.
-            data_tests:
-              - relationships:
-                  arguments:
-                    to: ref('sales_salesperson')
-                    field: businessentityid
-          - name: territoryid
-            description: Territory identification. Foreign key to the territory table.
-            data_tests:
-              - not_null
-              - relationships:
-                  arguments:
-                    to: ref('sales_salesterritory')
-                    field: territoryid
-          - name: creditcardid
-            description: Credit card identification. Foreign key to the credit card table.
-            data_tests:
-              - relationships:
-                  arguments:
-                    to: ref('sales_creditcard')
-                    field: creditcardid
-          - name: currencyrateid
-            description: Currency exchange rate identification. Foreign key to the currency rate table.
-            data_tests:
-              - relationships:
-                  arguments:
-                    to: ref('sales_currencyrate')
-                    field: currencyrateid
-          - name: orderdate
-            description: Date the order was created.
-          - name: shipdate
-            description: Date the order was shipped to the customer.
-          - name: duedate
-            description: Date the order is due to the customer.
-          - name: status
-            description: |
-              "Current order status. 
-              1: In process, 2: Approved, 3: Backordered, 4: Rejected, 5: Shipped, 6: Cancelled."
-          - name: onlineorderflag
-            description: |
-              "Online order indicator. 
-              0: placed offline by salesperson, 1: placed online by customer."
-          - name: creditcardapprovalcode
-            description: Approval code issued by the credit card company.
-          - name: subtotal
-            description: Order subtotal.
-          - name: taxamt
-            description: Tax amount.
-          - name: freight
-            description: Cost of shipping.
-          - name: totaldue
-            description: Order total. Sum of subtotal, taxamt and freight.
+
           - name: modifieddate
             description: Date the source row was last modified.
 
       - name: sales_salesorderheadersalesreason
         description: Bridge table between sales order header and sales reason tables.
         columns:
+
           - name: salesorderid
             description: Sales order identification. Primary key component. Foreign key to the sales order header table.
             data_tests:
@@ -403,6 +407,7 @@ sources:
                   arguments:
                     to: ref('sales_salesorderheader')
                     field: salesorderid
+
           - name: salesreasonid
             description: Sales reason identification. Primary key component. Foreign key to the sales reason table.
             data_tests:
@@ -411,12 +416,186 @@ sources:
                   arguments:
                     to: ref('sales_salesreason')
                     field: salesreasonid
+
           - name: modifieddate
             description: Date the source row was last modified.
+
+      - name: sales_salesorderheader
+        description: Sales order header information at the order grain. 
+        columns:
+
+          - name: salesorderid
+            description: Primary key.
+            data_tests:
+              - unique
+              - not_null
+
+          - name: customerid
+            description: Customer identification. Foreign key to the customer table.
+            data_tests:
+              - not_null
+              - relationships:
+                  arguments:
+                    to: ref('sales_customer')
+                    field: customerid
+
+          - name: salespersonid
+            description: Salesperson identification. Foreign key to the salesperson table.
+            data_tests:
+              - relationships:
+                  arguments:
+                    to: ref('sales_salesperson')
+                    field: businessentityid
+
+          - name: territoryid
+            description: Territory identification. Foreign key to the territory table.
+            data_tests:
+              - not_null
+              - relationships:
+                  arguments:
+                    to: ref('sales_salesterritory')
+                    field: territoryid
+
+          - name: creditcardid
+            description: Credit card identification. Foreign key to the credit card table.
+            data_tests:
+              - relationships:
+                  arguments:
+                    to: ref('sales_creditcard')
+                    field: creditcardid
+
+          - name: currencyrateid
+            description: Currency exchange rate identification. Foreign key to the currency rate table.
+            data_tests:
+              - relationships:
+                  arguments:
+                    to: ref('sales_currencyrate')
+                    field: currencyrateid
+
+          - name: orderdate
+            description: Date the order was created.
+
+          - name: shipdate
+            description: Date the order was shipped to the customer.
+
+          - name: duedate
+            description: Date the order is due to the customer.
+
+          - name: status
+            description: |
+              "Current order status. 
+              1: In process, 2: Approved, 3: Backordered, 4: Rejected, 5: Shipped, 6: Cancelled."
+
+          - name: onlineorderflag
+            description: |
+              "Online order indicator. 
+              0: placed offline by salesperson, 1: placed online by customer."
+
+          - name: subtotal
+            description: Order subtotal.
+
+          - name: taxamt
+            description: Tax amount.
+
+          - name: freight
+            description: Cost of shipping.
+
+          - name: totaldue
+            description: Order total. Sum of subtotal, taxamt and freight.
+
+          - name: modifieddate
+            description: Date the source row was last modified.
+
+
+      - name: sales_salesreason
+        description: Customer purchase reasons.
+        columns:
+
+          - name: salesreasonid
+            description: Primary key.
+            data_tests:
+              - unique
+              - not_null
+
+          - name: name
+            description: Sales reason description.
+
+          - name: reasontype
+            description: Sales reason category.
+
+          - name: modifieddate
+            description: Date the source row was last modified.
+
+      - name: sales_salesterritoryhistory
+        description: Table with salesperson's territory assignment information.
+        columns:
+
+          - name: businessentityid
+            description: Primary key component. Foreign key to the salesperson table.
+            data_tests:
+              - not_null
+
+          - name: territoryid
+            description: Primary key component. Foreign key to the territory table.
+            data_tests:
+              - not_null
+
+          - name: startdate
+            description: Start date of salesperson assignment to the territory. Primary key component.
+            data_tests:
+              - not_null
+
+          - name: enddate
+            description: End date of salesperson assignment to the territory.
+
+          - name: modifieddate
+            description: Date the source row was last modified.
+
+      - name: sales_salesterritory
+        description: Sales territory information.
+        columns:
+
+          - name: territoryid
+            description: Primary key.
+            data_tests:
+              - unique
+              - not_null
+
+          - name: name
+            description: Territory name.
+
+          - name: countryregioncode
+            description: Country or region ISO code. Foreign key to country region table.
+            data_tests:
+              - not_null
+              - relationships:
+                  arguments:
+                    to: ref('person_countryregion')
+                    field: countryregioncode
+
+          - name: group
+            description: Geographic area to which the territory belongs.
+
+          - name: salesytd
+            description: Year to date sales in the territory.
+
+          - name: saleslastyear
+            description: Last year sales in the territory.
+
+          - name: costytd
+            description: Year to date costs in the territory.
+
+          - name: costlastyear
+            description: Last year costs in the territory.
+
+          - name: modifieddate
+            description: Date the source row was last modified.
+
 
       - name: sales_salesperson
         description: Salesperson information.
         columns:
+
           - name: businessentityid
             description: Primary key. Foreign key to the person table.
             data_tests:
@@ -426,6 +605,7 @@ sources:
                   arguments:
                     to: ref('person_person')
                     field: businessentityid
+
           - name: territoryid
             description: Territory identification. Foreign key to the sales territory table.
             data_tests:
@@ -433,66 +613,22 @@ sources:
                   arguments:
                     to: ref('sales_salesterritory')
                     field: territoryid
-          - name: modifieddate
-            description: Date the source row was last modified.
 
-      - name: sales_salesreason
-        description: Customer purchase reasons.
-        columns:
-          - name: salesreasonid
-            description: Primary key.
-            data_tests:
-              - unique
-              - not_null
-          - name: name
-            description: Sales reason description.
-          - name: reasontype
-            description: Sales reason category.
-          - name: modifieddate
-            description: Date the source row was last modified.
-
-      - name: sales_salesterritory
-        description: Sales territory information.
-        columns:
-          - name: territoryid
-            description: Primary key.
-            data_tests:
-              - unique
-              - not_null
-          - name: name
-            description: Territory name.
-          - name: countryregioncode
-            description: Country or region ISO code. Foreign key to country region table.
-            data_tests:
-              - not_null
-              - relationships:
-                  arguments:
-                    to: ref('person_countryregion')
-                    field: countryregioncode
-          - name: group
-            description: Geographic area to which the territory belongs.
-          - name: salesytd
-            description: Year to date sales in the territory.
-          - name: saleslastyear
-            description: Last year sales in the territory.
-          - name: costytd
-            description: Year to date costs in the territory.
-          - name: costlastyear
-            description: Last year costs in the territory.
           - name: modifieddate
             description: Date the source row was last modified.
 
       - name: sales_store
         description: Reseller stores information.
         columns:
+
           - name: businessentityid
             description: Primary key.
             data_tests:
               - unique
               - not_null
+
           - name: name
             description: Store name.
-          - name: demographics
-            description: Demographic information about the store.
+
           - name: modifieddate
             description: Date the source row was last modified.

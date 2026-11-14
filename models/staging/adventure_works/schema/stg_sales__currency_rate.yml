@@ -12,8 +12,8 @@ models:
     - name: fk_to_currency_code
       description: Code of the currency to which to convert. Foreign key to the currency staging model.
 
-    - name: ts_currency_rate_date
-      description: Timestamp when currency rate was obtained.
+    - name: dt_currency_rate_date
+      description: Date and time when currency rate was obtained.
 
     - name: average_rate
       description: Daily average of the exchange rate.

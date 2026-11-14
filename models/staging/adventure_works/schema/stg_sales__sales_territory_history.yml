@@ -1,0 +1,19 @@
+models:
+  - name: stg_sales__sales_territory_history
+    description: Staging model for the sales territory history source table.
+    columns:
+
+    - name: pk_business_entity_id
+      description: Primary key component. Foreign key to the salesperson staging model.
+
+    - name: pl_territory_id
+      description: Primary key component. Foreign key to the territory staging model.
+
+    - name: pk_dt_start_date
+      description: Start date of salesperson assignment to the territory. Primary key component.
+
+    - name: dt_end_date
+      description: End date of salesperson assignment to the territory.
+
+    - name: ts_modified_date
+      description: Timestamp when the source row was last modified.
