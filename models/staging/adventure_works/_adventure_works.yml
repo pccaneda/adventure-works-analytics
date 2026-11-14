@@ -203,8 +203,8 @@ sources:
             description: Whether the product is manufactured internally. Boolean.
 
           - name: finishedgoodsflag
-            description: Whether the product is a finished good available for sale. Boolean
-            .
+            description: Whether the product is a finished good available for sale. Boolean.
+            
           - name: color
             description: Product color.
 
@@ -351,6 +351,9 @@ sources:
 
       - name: sales_salesorderdetail
         description: Sales order line information at the product grain. Includes unit prices, quantities and discounts.
+        data_tests:
+          - unique:
+              column_name: "cast(salesorderid as string) || '-' || cast(salesorderdetailid as string)"
         columns:
 
           - name: salesorderid
@@ -397,6 +400,9 @@ sources:
 
       - name: sales_salesorderheadersalesreason
         description: Bridge table between sales order header and sales reason tables.
+        data_tests:
+          - unique:
+              column_name: "cast(salesorderid as string) || '-' || cast(salesreasonid as string)"
         columns:
 
           - name: salesorderid
@@ -528,6 +534,9 @@ sources:
 
       - name: sales_salesterritoryhistory
         description: Table with salesperson's territory assignment information.
+        data_tests:
+          - unique:
+              column_name: "cast(businessentityid as string) || '-' || cast(territoryid as string) || '-' || cast(startdate as string)"
         columns:
 
           - name: businessentityid
